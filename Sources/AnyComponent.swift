@@ -140,13 +140,14 @@ public struct AnyComponent: Component {
     }
 }
 
-extension AnyComponent: CustomDebugStringConvertible {
+extension AnyComponent: @preconcurrency CustomDebugStringConvertible {
     /// A textual representation of this instance, suitable for debugging.
     public var debugDescription: String {
         return "AnyComponent(\(box.base))"
     }
 }
 
+@MainActor
 @usableFromInline
 internal protocol AnyComponentBox {
     var base: Any { get }

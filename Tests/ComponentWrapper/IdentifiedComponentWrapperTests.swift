@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class IdentifiedComponentWrapperTests: XCTestCase {
     func testIDAndWrapped() {
         let id = 1000

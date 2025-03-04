@@ -225,12 +225,12 @@ extension UITableViewAdapter: UITableViewDelegate {
 }
 
 private extension UITableViewAdapter {
-    func heightForRow(in tableView: UITableView, indexPath: IndexPath, defaultHeight: CGFloat) -> CGFloat {
+    @MainActor func heightForRow(in tableView: UITableView, indexPath: IndexPath, defaultHeight: CGFloat) -> CGFloat {
         let node = cellNode(at: indexPath)
         return node.component.referenceSize(in: tableView.bounds)?.height ?? defaultHeight
     }
 
-    func heightForHeader(in tableView: UITableView, section: Int, defaultHeight: CGFloat, leastHeight: CGFloat) -> CGFloat {
+    @MainActor func heightForHeader(in tableView: UITableView, section: Int, defaultHeight: CGFloat, leastHeight: CGFloat) -> CGFloat {
         guard let node = headerNode(in: section) else {
             let hasHeaderTitle = responds(to: #selector(UITableViewDataSource.tableView(_:titleForHeaderInSection:)))
             return hasHeaderTitle ? defaultHeight : leastHeight
@@ -239,7 +239,7 @@ private extension UITableViewAdapter {
         return node.component.referenceSize(in: tableView.bounds)?.height ?? defaultHeight
     }
 
-    func heightForFooter(in tableView: UITableView, section: Int, defaultHeight: CGFloat, leastHeight: CGFloat) -> CGFloat {
+    @MainActor func heightForFooter(in tableView: UITableView, section: Int, defaultHeight: CGFloat, leastHeight: CGFloat) -> CGFloat {
         guard let node = footerNode(in: section) else {
             let hasFooterTitle = responds(to: #selector(UITableViewDataSource.tableView(_:titleForFooterInSection:)))
             return hasFooterTitle ? defaultHeight : leastHeight

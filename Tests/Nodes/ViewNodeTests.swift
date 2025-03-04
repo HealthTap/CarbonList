@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class ViewNodeTests: XCTestCase {
     func testInitWithComponent() {
         let component = A.Component()

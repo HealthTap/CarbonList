@@ -3,7 +3,7 @@ import DifferenceKit
 /// The node for view which need not be uniquely identified like header or footer.
 /// Erase the type of component and wrapping it.
 /// This works as an intermediary for `DifferenceKit`.
-public struct ViewNode {
+@MainActor public struct ViewNode {
     /// A type-erased component which wrapped in `self`.
     public var component: AnyComponent
 
@@ -24,7 +24,7 @@ public struct ViewNode {
     }
 }
 
-extension ViewNode: ContentEquatable {
+extension ViewNode: @preconcurrency ContentEquatable {
     /// Indicate whether the content of `self` is equals to the content of
     /// the given source value.
     @inlinable
@@ -33,7 +33,7 @@ extension ViewNode: ContentEquatable {
     }
 }
 
-extension ViewNode: CustomDebugStringConvertible {
+extension ViewNode: @preconcurrency CustomDebugStringConvertible {
     /// A textual representation of this instance, suitable for debugging.
     @inlinable
     public var debugDescription: String {

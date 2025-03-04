@@ -1,13 +1,14 @@
 import UIKit
 
 /// Represents a container that can render a component.
+@MainActor
 public protocol ComponentRenderable: class {
     /// The container view to be render a component.
     var componentContainerView: UIView { get }
 }
 
-private let renderedContentAssociation = RuntimeAssociation<Any?>(default: nil)
-private let renderedComponentAssociation = RuntimeAssociation<AnyComponent?>(default: nil)
+@MainActor private let renderedContentAssociation = RuntimeAssociation<Any?>(default: nil)
+@MainActor private let renderedComponentAssociation = RuntimeAssociation<AnyComponent?>(default: nil)
 
 public extension ComponentRenderable {
     /// A content of component that rendered on container.
@@ -66,6 +67,7 @@ public extension ComponentRenderable where Self: UIView {
         return self
     }
 }
+
 
 public extension ComponentRenderable where Self: UITableViewCell {
     /// The container view to be render a component.

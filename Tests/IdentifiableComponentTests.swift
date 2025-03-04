@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class IdentifiableComponentTests: XCTestCase {
     func testHashable() {
         let component = A.Component()

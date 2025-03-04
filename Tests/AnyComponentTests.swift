@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class AnyComponentTests: XCTestCase {
     func testBase() {
         let component = A.Component()

@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class CellsBuildableTests: XCTestCase {
     func testBuildCells() {
         let componentA = A.Component()

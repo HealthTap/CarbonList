@@ -5,7 +5,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 public extension Component where Self: View {
     /// Declares the content and behavior of this view.
-    var body: some View {
+    @MainActor var body: some View {
         ComponentView(self)
     }
 }

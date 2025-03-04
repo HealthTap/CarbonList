@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class ComponentTests: XCTestCase {
     func testReuseIdentifier() {
         let componentA = A.Component()

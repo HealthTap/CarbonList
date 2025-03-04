@@ -75,7 +75,7 @@ open class UICollectionViewAdapter: NSObject, Adapter {
     ///   - collectionView: A collection view that supplementary views registered.
     ///
     /// - Returns: The kinds of supplementary view registered in the specified collection view.
-    public func registeredSupplementaryViewKinds(for collectionView: UICollectionView) -> [String] {
+    @MainActor public func registeredSupplementaryViewKinds(for collectionView: UICollectionView) -> [String] {
         return Array(registeredViewReuseIdentifiersForKindAssociation[collectionView].keys)
     }
 }
@@ -204,7 +204,7 @@ extension UICollectionViewAdapter: UICollectionViewDelegate {
 }
 
 private extension UICollectionViewAdapter {
-    func dequeueComponentSupplementaryView(
+    @MainActor func dequeueComponentSupplementaryView(
         ofKind kind: String,
         collectionView: UICollectionView,
         indexPath: IndexPath,
@@ -234,8 +234,8 @@ private extension UICollectionViewAdapter {
     }
 }
 
-private let registeredCellReuseIdentifiersAssociation = RuntimeAssociation<Set<String>>(default: [])
-private let registeredViewReuseIdentifiersForKindAssociation = RuntimeAssociation<[String: Set<String>]>(default: [:])
+@MainActor private let registeredCellReuseIdentifiersAssociation = RuntimeAssociation<Set<String>>(default: [])
+@MainActor private let registeredViewReuseIdentifiersForKindAssociation = RuntimeAssociation<[String: Set<String>]>(default: [:])
 
 private extension UICollectionView {
     func _dequeueReusableCell(withReuseIdentifier reuseIdentifier: String, for indexPath: IndexPath) -> UICollectionViewCell? {

@@ -26,6 +26,7 @@ import UIKit
 ///         Label("Cell 3")
 ///             .identified(by: \.text)
 ///     }
+@MainActor
 open class Renderer<Updater: CarbonList.Updater> {
     /// An instance of adapter that specified at initialized.
     public let adapter: Updater.Adapter

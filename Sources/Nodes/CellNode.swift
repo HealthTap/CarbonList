@@ -3,6 +3,7 @@ import DifferenceKit
 /// The node for cell that can be uniquely identified.
 /// Wrapping type-erased identifier and component.
 /// This works as an intermediary for `DifferenceKit`.
+@MainActor
 public struct CellNode {
     /// A type-erased identifier that can be used to uniquely
     /// identify the component.
@@ -53,7 +54,7 @@ extension CellNode: CellsBuildable {
     }
 }
 
-extension CellNode: Differentiable {
+extension CellNode: @preconcurrency Differentiable {
     /// An identifier value for difference calculation.
     @inlinable
     public var differenceIdentifier: AnyHashable {
@@ -68,7 +69,7 @@ extension CellNode: Differentiable {
     }
 }
 
-extension CellNode: CustomDebugStringConvertible {
+extension CellNode: @preconcurrency CustomDebugStringConvertible {
     /// A textual representation of this instance, suitable for debugging.
     @inlinable
     public var debugDescription: String {

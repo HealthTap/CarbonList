@@ -1,4 +1,5 @@
 /// Represents an instance that can build sections.
+@MainActor
 public protocol SectionsBuildable {
     /// Build an array of section.
     func buildSections() -> [Section]

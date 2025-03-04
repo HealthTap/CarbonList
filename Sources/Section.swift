@@ -21,6 +21,7 @@ import DifferenceKit
 ///                 .identified(by: \.text)
 ///         }
 ///     )
+@MainActor
 public struct Section {
     /// A type-erased identifier that can be used to uniquely
     /// identify the section.
@@ -191,7 +192,7 @@ extension Section: SectionsBuildable {
     }
 }
 
-extension Section: DifferentiableSection {
+extension Section: @preconcurrency DifferentiableSection {
     /// An identifier value for difference calculation.
     @inlinable
     public var differenceIdentifier: AnyHashable {

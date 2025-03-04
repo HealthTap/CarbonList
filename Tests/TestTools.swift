@@ -464,7 +464,7 @@ final class MockCustomCollectionViewAdapter: UICollectionViewAdapter {
 }
 
 /// Extract `renderedContent` from specified container.
-func renderedContent<T>(of container: Any, as type: T.Type) -> T? {
+@MainActor func renderedContent<T>(of container: Any, as type: T.Type) -> T? {
     guard
         let container = container as? ComponentRenderable,
         let content = container.renderedContent as? T else {

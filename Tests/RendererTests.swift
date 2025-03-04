@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class RendererTests: XCTestCase {
     func testTargetWeakCapture() {
         var target: MockTarget? = MockTarget()

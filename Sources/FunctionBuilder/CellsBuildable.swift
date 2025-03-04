@@ -1,7 +1,8 @@
 /// Represents an instance that can build cells.
+@MainActor
 public protocol CellsBuildable {
     /// Build an array of cell.
-    func buildCells() -> [CellNode]
+    @MainActor func buildCells() -> [CellNode]
 }
 
 extension Optional: CellsBuildable where Wrapped: CellsBuildable {

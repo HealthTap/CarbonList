@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class GroupTests: XCTestCase {
     func testInitWithoutElements() {
         let group = Group<CellNode>()

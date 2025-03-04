@@ -4,6 +4,7 @@ import XCTest
 import SwiftUI
 @testable import CarbonList
 
+@MainActor
 final class ComponentSwiftUISupportTests: XCTestCase {
     func testDisplayLifecycle() {
         guard #available(iOS 13.0, *) else {

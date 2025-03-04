@@ -1,4 +1,5 @@
 import UIKit
+import DifferenceKit
 
 /// An updater for managing diffing updates to render data to the `UICollectionView`.
 open class UICollectionViewUpdater<Adapter: UICollectionViewAdapter>: Updater {
@@ -31,7 +32,7 @@ open class UICollectionViewUpdater<Adapter: UICollectionViewAdapter>: Updater {
     /// - Parameters:
     ///   - target: A target to be prepared.
     ///   - adapter: An adapter to be set to `delegate` and `dataSource`.
-    open func prepare(target: UICollectionView, adapter: Adapter) {
+    @MainActor open func prepare(target: UICollectionView, adapter: Adapter) {
         target.delegate = adapter
         target.dataSource = adapter
         target.reloadData()
@@ -46,7 +47,7 @@ open class UICollectionViewUpdater<Adapter: UICollectionViewAdapter>: Updater {
     ///   - target: A target instance to be updated to render given data.
     ///   - adapter: An adapter holding currently rendered data.
     ///   - data: A collection of sections to be rendered next.
-    open func performUpdates(target: UICollectionView, adapter: Adapter, data: [Section]) {
+    @MainActor open func performUpdates(target: UICollectionView, adapter: Adapter, data: [Section]) {
         guard case .some = target.window else {
             adapter.data = data
             target.reloadData()
@@ -150,7 +151,7 @@ open class UICollectionViewUpdater<Adapter: UICollectionViewAdapter>: Updater {
     /// - Parameters:
     ///   - target: A target instance to render components.
     ///   - adapter: An adapter holding currently rendered data.
-    open func renderVisibleComponents(in target: UICollectionView, adapter: Adapter) {
+    @MainActor open func renderVisibleComponents(in target: UICollectionView, adapter: Adapter) {
         UIView.performWithoutAnimation {
             target.performBatchUpdates({
                 for kind in adapter.registeredSupplementaryViewKinds(for: target) {

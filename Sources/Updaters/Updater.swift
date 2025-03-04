@@ -1,4 +1,5 @@
 /// Represents an updater that manages the updation for target.
+@MainActor
 public protocol Updater {
     /// A type that represents a target to be updated for render given data.
     associatedtype Target: AnyObject
@@ -11,7 +12,7 @@ public protocol Updater {
     /// - Parameters:
     ///   - target: A target to be prepared.
     ///   - adapter: An adapter to be prepared.
-    func prepare(target: Target, adapter: Adapter)
+    @MainActor func prepare(target: Target, adapter: Adapter)
 
     /// Perform updates to render given data to the target.
     ///
@@ -19,5 +20,5 @@ public protocol Updater {
     ///   - target: A target instance to be updated to render given data.
     ///   - adapter: An adapter holding currently rendered data.
     ///   - data: A collection of sections to be rendered next.
-    func performUpdates(target: Target, adapter: Adapter, data: [Section])
+    @MainActor func performUpdates(target: Target, adapter: Adapter, data: [Section])
 }

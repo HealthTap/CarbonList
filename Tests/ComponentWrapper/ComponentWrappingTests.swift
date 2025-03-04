@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class ComponentWrappingTests: XCTestCase {
     func testForwardingActions() {
         let reuseIdentifier = "testForwardingActions"

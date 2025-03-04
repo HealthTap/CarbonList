@@ -34,6 +34,7 @@ import UIKit
 ///             }
 ///         }
 ///     }
+@MainActor
 public protocol Component {
     /// A type that represents a content to be render on the element of list UI.
     associatedtype Content

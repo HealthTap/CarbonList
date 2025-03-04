@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class SectionsBuilderTests: XCTestCase {
     func testInit0() {
         let builders = [

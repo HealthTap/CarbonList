@@ -10,7 +10,7 @@ open class UICollectionViewReloadDataUpdater<Adapter: UICollectionViewAdapter>: 
     /// - Parameters:
     ///   - target: A target to be prepared.
     ///   - adapter: An adapter to be set to `delegate` and `dataSource`.
-    open func prepare(target: UICollectionView, adapter: Adapter) {
+    @MainActor open func prepare(target: UICollectionView, adapter: Adapter) {
         target.delegate = adapter
         target.dataSource = adapter
         target.reloadData()
@@ -23,7 +23,7 @@ open class UICollectionViewReloadDataUpdater<Adapter: UICollectionViewAdapter>: 
     ///   - target: A target instance to be updated to render given data.
     ///   - adapter: An adapter holding currently rendered data.
     ///   - data: A collection of sections to be rendered next.
-    open func performUpdates(target: UICollectionView, adapter: Adapter, data: [Section]) {
+    @MainActor open func performUpdates(target: UICollectionView, adapter: Adapter, data: [Section]) {
         adapter.data = data
         target.reloadData()
     }

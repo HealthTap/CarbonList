@@ -2,6 +2,7 @@ import XCTest
 import DifferenceKit
 @testable import CarbonList
 
+@MainActor
 final class UITableViewReloadDataUpdaterTests: XCTestCase {
     func testPrepare() {
         let updater = MockTableViewReloadDataUpdater()

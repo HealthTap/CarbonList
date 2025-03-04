@@ -1,6 +1,7 @@
 import XCTest
 @testable import CarbonList
 
+@MainActor
 final class ComponentContainerTests: XCTestCase {
     func testContentWillDisplay() {
         let container = MockComponentContainer()

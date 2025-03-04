@@ -2,6 +2,7 @@ import XCTest
 import DifferenceKit
 @testable import CarbonList
 
+@MainActor
 final class UICollectionViewUpdaterTests: XCTestCase {
     func testPrepare() {
         let updater = MockCollectionViewUpdater()

@@ -9,7 +9,7 @@
 ///
 ///         Label("Cell 2")
 ///     }
-public struct Group<Element> {
+@MainActor public struct Group<Element> {
     @usableFromInline
     internal var elements: [Element]
 

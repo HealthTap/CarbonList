@@ -2,6 +2,7 @@ import UIKit
 
 /// Represents a wrapper of component that forwards all actions to wrapped component.
 /// You can easily conform arbitrary type to `Component` protocol by wrapping component instance.
+@MainActor
 @dynamicMemberLookup
 public protocol ComponentWrapping: Component {
     /// The type of wrapped component.

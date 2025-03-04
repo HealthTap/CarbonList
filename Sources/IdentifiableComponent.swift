@@ -14,6 +14,7 @@
 ///             content.text = name
 ///         }
 ///     }
+@MainActor
 public protocol IdentifiableComponent: Component, CellsBuildable {
     /// A type that represents an id that used to uniquely identify the component.
     associatedtype ID: Hashable
